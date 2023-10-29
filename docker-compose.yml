@@ -1,0 +1,18 @@
+version: "3"
+
+services:
+  db:
+    container_name: api_funcionarios_db
+    image: ${MYSQL_IMAGE}
+    restart: always
+    ports:
+      - ${MYSQL_PORT}
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DB_NAME}
+    networks:
+      - default
+
+networks:
+  default:
+    name: api_funcionarios_net
