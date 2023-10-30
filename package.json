@@ -20,7 +20,8 @@
     "jsonwebtoken": "^9.0.2",
     "moment": "^2.29.4",
     "mysql2": "^3.6.2",
-    "sequelize": "^6.33.0"
+    "sequelize": "^6.33.0",
+    "swagger-ui-express": "^5.0.0"
   },
   "devDependencies": {
     "dotenv": "^16.3.1",

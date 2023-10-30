@@ -88,3 +88,4 @@
 ### Aproveite a API com o Swagger
 
 ### Agora, acesse a API usando o Swagger para visualizar e testar os endpoints disponíveis.
+##### http://localhost:3000/swagger

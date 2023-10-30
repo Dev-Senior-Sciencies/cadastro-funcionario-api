@@ -1,0 +1,315 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "title": "API Cadastro de funcionarios",
+      "description": "Api para criar um cadastro de funcionarios com validações",
+      "version": "1.0.0"
+    },
+    "basePath": "http://localhost:3000/",
+    "schemes": ["http", "https"],
+    "securityDefinitions": {
+      "BearerAuth": {
+        "type": "apiKey",
+        "name": "Authorization",
+        "in": "header"
+      }
+    },
+    "paths": {
+      "/login/user": {
+        "post": {
+          "summary": "Autenticação de Usuário",
+          "description": "Autentica um usuário",
+          "parameters": [
+            {
+              "name": "body",
+              "in": "body",
+              "description": "Credenciais de usuário",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/UserCredentials"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Usuário autenticado com sucesso"
+            },
+            "401": {
+              "description": "Credenciais inválidas"
+            }
+          }
+        }
+      },
+      "/user/create": {
+        "post": {
+          "summary": "Criar Usuário",
+          "description": "Cria um novo usuário",
+          "parameters": [
+            {
+              "name": "body",
+              "in": "body",
+              "description": "Dados do usuário",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/UserData"
+              }
+            }
+          ],
+          "responses": {
+            "201": {
+              "description": "Usuário criado com sucesso"
+            },
+            "400": {
+              "description": "Parâmetros inválidos"
+            }
+          },
+          "security": [
+            {
+              "BearerAuth": []
+            }
+          ]
+        }
+      },
+      "/user/list": {
+        "get": {
+          "summary": "Lista de Usuários",
+          "description": "Obtém a lista de todos os usuários",
+          "responses": {
+            "200": {
+              "description": "Lista de usuários obtida com sucesso"
+            }
+          },
+          "security": [
+            {
+              "BearerAuth": []
+            }
+          ]
+        }
+      },
+      "/user/update/{id}": {
+        "put": {
+          "summary": "Atualizar Usuário",
+          "description": "Atualiza os dados de um usuário existente",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "type": "integer"
+            },
+            {
+              "name": "body",
+              "in": "body",
+              "description": "Novos dados do usuário",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/UserData"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Usuário atualizado com sucesso"
+            },
+            "400": {
+              "description": "Parâmetros inválidos"
+            },
+            "404": {
+              "description": "Usuário não encontrado"
+            }
+          },
+          "security": [
+            {
+              "BearerAuth": []
+            }
+          ]
+        }
+      },
+      "/user/delete/{id}": {
+        "delete": {
+          "summary": "Deletar Usuário",
+          "description": "Deleta um usuário existente",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "type": "integer"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Usuário deletado com sucesso"
+            },
+            "404": {
+              "description": "Usuário não encontrado"
+            }
+          },
+          "security": [
+            {
+              "BearerAuth": []
+            }
+          ]
+        }
+      },
+      "/contato/create": {
+        "post": {
+          "summary": "Criar Contato",
+          "description": "Cria um novo contato",
+          "parameters": [
+            {
+              "name": "body",
+              "in": "body",
+              "description": "Dados do contato",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/ContatoData"
+              }
+            }
+          ],
+          "responses": {
+            "201": {
+              "description": "Contato criado com sucesso"
+            },
+            "400": {
+              "description": "Parâmetros inválidos"
+            }
+          },
+          "security": [
+            {
+              "BearerAuth": []
+            }
+          ]
+        }
+      },
+      "/contato/list": {
+        "get": {
+          "summary": "Lista de Contatos",
+          "description": "Obtém a lista de todos os contatos",
+          "responses": {
+            "200": {
+              "description": "Lista de contatos obtida com sucesso"
+            }
+          },
+          "security": [
+            {
+              "BearerAuth": []
+            }
+          ]
+        }
+      },
+      "/contato/update/{id}": {
+        "put": {
+          "summary": "Atualizar Contato",
+          "description": "Atualiza os dados de um contato existente",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "type": "integer"
+            },
+            {
+              "name": "body",
+              "in": "body",
+              "description": "Novos dados do contato",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/ContatoData"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Contato atualizado com sucesso"
+            },
+            "400": {
+              "description": "Parâmetros inválidos"
+            },
+            "404": {
+              "description": "Contato não encontrado"
+            }
+          },
+          "security": [
+            {
+              "BearerAuth": []
+            }
+          ]
+        }
+      },
+      "/contato/delete/{id}": {
+        "delete": {
+          "summary": "Deletar Contato",
+          "description": "Deleta um contato existente",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "type": "integer"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Contato deletado com sucesso"
+            },
+            "404": {
+              "description": "Contato não encontrado"
+            }
+          },
+          "security": [
+            {
+              "BearerAuth": []
+            }
+          ]
+        }
+      }
+    },
+    "definitions": {
+      "UserCredentials": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        }
+      },
+      "UserData": {
+        "type": "object",
+        "properties": {
+          "nome": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "data_nascimento": {
+            "type": "string",
+            "format": "date"
+          },
+          "data_entrada": {
+            "type": "string",
+            "format": "date"
+          }
+        }
+      },
+      "ContatoData": {
+        "type": "object",
+        "properties": {
+          "fone": {
+            "type": "string"
+          },
+          "userId": {
+            "type": "integer"
+          }
+        }
+      }
+    }
+  }
+  
